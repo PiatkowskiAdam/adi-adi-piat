@@ -1,0 +1,338 @@
+html {
+  text-align: center;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background-color: #C8DDDA;
+  color: #0D3746;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  line-height: 1.4;
+}
+
+.mainMenu {
+  background-color: #C8DDDA;
+  position: absolute;
+  z-index: 2;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+select {
+  color: #061826;
+  text-align-last:center;
+}
+
+h1 {
+  margin-top: 20%;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: medium;
+}
+
+.difficultyLevel {
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+
+.difficultyLevel::after {
+  content: '';
+  padding-left: 5px;
+}
+
+label {
+  display: inline-block;
+}
+
+.btn {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  width: 250px;
+  height: 50px;
+  border: 2px solid #0D3746;
+  border-radius: 5px;
+  background-color: #42CC8C;
+  transition: all 0.35s;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+
+
+.btn:hover {
+  background-color: #42CC8C;
+  border: 2px solid #A73737;
+  color: #A73737;
+  width: 275px;
+  height: 55px;
+}
+
+.smallBtn {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  border: 2px solid #0D3746;
+  border-radius: 5px;
+  background-color: #42CC8C;
+  transition: all 0.35s;
+  font-size: 1rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.smallBtn:disabled {
+  background-color: #808D8B;
+}
+
+.smallBtn:disabled:hover {
+  margin-bottom: 1rem;
+  border: 2px solid #0D3746;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: inherit;
+  background-color: #808D8B;
+  width: 100px;
+  height: 50px;
+}
+
+.smallBtn:hover {
+  background-color: #42CC8C;
+  border: 2px solid #A73737;
+  color: #A73737;
+  width: 110px;
+  height: 55px;
+}
+
+
+.content {
+  position: relative;
+  top: 20vh;
+}
+
+.rules {
+  position: absolute;
+  display: none;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 3;
+  background-color: inherit;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
+  }
+}
+
+.playingBoard {
+  justify-self: start;
+}
+
+.selectionSide-6-Ball{
+  display: grid;
+  grid-template-columns: 36px 36px 36px;
+  grid-auto-rows: 36px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding-left: 41px;
+  cursor: pointer;
+}
+
+.selectionSide-8-Ball {
+  display: grid;
+  grid-template-columns: 36px 36px 36px 36px;
+  grid-auto-rows: 36px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.singleRow {
+  padding-left: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+  grid-auto-rows: 50px;
+  grid-row-gap: 5px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.2;
+}
+
+.finalSolution {
+  padding-left: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 50px;
+  grid-row-gap: 5px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .finalSolution {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+    width: 200px;
+  }
+}
+
+.finishedRow {
+  padding-left: 15px;
+  background-color: #5E747F;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+  grid-auto-rows: 50px;
+  grid-row-gap: 5px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.activeRow {
+  padding-left: 15px;
+  background-color: #A6B7BB;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+  grid-auto-rows: 50px;
+  grid-row-gap: 5px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.activeRow .emptyBall {
+  margin: auto;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background-color: #f5f7f6;
+}
+
+
+.scoringDiv {
+  display: grid;
+  grid-template-columns: 12px 12px;
+  grid-auto-rows: 12px;
+  margin: auto;
+}
+
+.ball {
+  margin: auto;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #2E294E;
+  border-radius: 50%;
+}
+
+.ball:hover {
+  border: 3px solid #2E294E;
+  height: 28px;
+  width: 28px;
+}
+
+.emptyBall, .nextBall {
+  margin: auto;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background-color: #f5f7f6;
+}
+
+.coloredBall {
+  margin: auto;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.hovered {
+  margin: auto;
+  height: 30px;
+  width: 30px;
+  border: 2px dashed black;
+  border-radius: 50%;
+  background-color: #a8a8a8;
+}
+
+.scoringBall, .scoredBall {
+  margin: auto;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: inherit;
+}
+
+.scoredBallBlack {
+  margin: auto;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.scoredBallWhite {
+  margin: auto;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+
+.gameConclusion {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(128, 141, 139, 0.7);
+}
+
+
+.gameConclusionBox {
+  width: 70%;
+  background-color: #C8DDDA;
+  margin: 10% auto;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+}

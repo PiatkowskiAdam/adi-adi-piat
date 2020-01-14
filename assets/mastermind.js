@@ -82,8 +82,12 @@ function shuttingRules() {
 */
 
 
-// selection of the sideboard
-let selectionSide = document.querySelector(".selectionSide-8-Ball");
+// selecting the Sideboard
+let selectionSide = document.querySelector('.selectionSide');
+
+
+// selecting the section with the balls for selection
+let selectionBallsSection = document.querySelector(".selectionSide-8-Ball");
 
 
 // button that submits a row
@@ -110,14 +114,14 @@ function Ball(color) {
 function setSelectionBalls(difficulty) {
   if (difficulty === "easy" || difficulty === "normal") {
     for (let i = 0; i < 6; i++) {
-      selectionSide.appendChild(balls[i]);
+      selectionBallsSection.appendChild(balls[i]);
     }
-    selectionSide.className = 'selectionSide-6-Ball';
+    selectionBallsSection.className = 'selectionSide-6-Ball';
   } else {
     for (let i = 0; i < balls.length; i++) {
-      selectionSide.appendChild(balls[i]);
+      selectionBallsSection.appendChild(balls[i]);
     }
-    selectionSide.className = 'selectionSide-8-Ball';
+    selectionBallsSection.className = 'selectionSide-8-Ball';
   }
 }
 
@@ -176,16 +180,24 @@ let playingBoard = document.querySelector(".playingBoard");
 
 
 // identifying the modal that shows up after the game ends
-let gameConclusion = document.querySelector(".gameConclusion")
+let gameConclusion = document.querySelector(".gameConclusion");
 
 
 // the text that indicates the result of the game
-let result = document.querySelector(".result")
+let result = document.querySelector(".result");
 
 
-// and the button that lets you restart the game
-let restartBtn = document.querySelector('.playAgain')
-restartBtn.addEventListener('click', gameRestart)
+// the button that lets you restart the game
+let restartBtn = document.querySelector('.playAgain');
+restartBtn.addEventListener('click', gameRestart);
+
+// the button that closes the app
+let exitBtn = document.querySelector('.exitGame');
+exitBtn.addEventListener('click', gameEnd);
+
+// the button that allows to analyse the game that had just been played
+let analyseBtn = document.querySelector('.analyseGame');
+analyseBtn.addEventListener('click', gameInspector);
 
 
 //function setting up empty rows
@@ -279,10 +291,58 @@ function gameStart(difficulty) {
 }
 
 
+// this allows to close the game conclusion box by clicking on the background and inspect the game
+function gameInspector() {
+  gameConclusion.style.display = 'none';
+  submitButton.disabled = true;
+  revertButton.disabled = true;
+
+  let correctSolutionText = document.createElement('h2');
+  correctSolutionText.textContent = "The Correct Solution: ";
+  selectionSide.appendChild(correctSolutionText);
+
+  let correctSolutionDiv = document.createElement('div');
+  correctSolutionDiv.setAttribute('class', 'finalSolution');
+  correctSolutionDiv.style.opacity = '1';
+  selectionSide.appendChild(correctSolutionDiv);
+
+  // creating a section with the correct solution and buttons to restart/exit the game
+  for (let i = 0; i < generatedCode.length; i++) {
+    let solutionBall = document.createElement('div');
+    solutionBall.setAttribute('class', 'coloredBall');
+    solutionBall.style.backgroundColor = generatedCode[i].style.backgroundColor;
+    correctSolutionDiv.appendChild(solutionBall);
+  }
+
+  let smallNewGameBtn = document.createElement('button');
+  smallNewGameBtn.setAttribute('class', 'smallBtn');
+  smallNewGameBtn.textContent = "New Game";
+  selectionSide.appendChild(smallNewGameBtn);
+  smallNewGameBtn.addEventListener('click', gameRestart);
+
+  let spacing = document.createElement('span');
+  spacing.textContent = ' ';
+  selectionSide.appendChild(spacing);
+
+  let smallExitBtn = document.createElement('button');
+  smallExitBtn.setAttribute('class', 'smallBtn');
+  smallExitBtn.textContent = "Exit Game";
+  selectionSide.appendChild(smallExitBtn);
+  smallExitBtn.addEventListener('click', gameEnd)
+}
+
+
+
 // this function reloads the page, allowing the game to be started over. The current difficulty is saved so that it's not overwritten by the default difficulty at the onset of the new game.
 function gameRestart() {
   sessionStorage.setItem("difficulty", difficulty)
   location.reload()
+}
+
+
+// this function closes the game
+function gameEnd() {
+  window.close()
 }
 
 

@@ -14,3 +14,12 @@ The difficulty selection was added. In order to achieve that, some parts of the 
 The Main Menu was added. In main menu the user can read the rules, select difficulty and start a new game.
 
 The "design" was left untouched. The next version of the game will focus on the visual side of the game.
+
+
+#Mastermind 1.0
+
+The aim of this version was to complete the game.
+
+The styles was added to make the product visually appealing.
+
+After the game concludes, players can now "analyse their game", i.e. review it afterwards with the correct solution displayed to them.
