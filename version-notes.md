@@ -1,8 +1,10 @@
-# Mastermind 0.8
+# Mastermind 1.0
 
-The aim of this version was to provide a fully functioning game, i.e. making sure that the logical aspects are sound.
+The aim of this version was to complete the game.
 
-The visual side of the game remains to be developed in further versions.
+The CSS file was written virtually from scratch to make the product visually appealing.
+
+After the game concludes, players can now "analyse" their game, i.e. review it afterwards with the correct solution displayed to them.
 
 
 # Mastermind 0.9
@@ -16,10 +18,8 @@ The Main Menu was added. In main menu the user can read the rules, select diffic
 The "design" was left untouched. The next version of the game will focus on the visual side of the game.
 
 
-# Mastermind 1.0
+# Mastermind 0.8
 
-The aim of this version was to complete the game.
+The aim of this version was to provide a fully functioning game, i.e. making sure that the logical aspects are sound.
 
-The styles was added to make the product visually appealing.
-
-After the game concludes, players can now "analyse their game", i.e. review it afterwards with the correct solution displayed to them.
+The visual side of the game remains to be developed in further versions.
